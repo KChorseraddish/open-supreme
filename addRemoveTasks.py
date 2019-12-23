@@ -103,21 +103,32 @@ def deleteTask(tasksFile):
         time.sleep(2)
 
 def viewTask(tasksFile):
-    whichTask = input("Enter the name of the task you wish to view: ")
-    if whichTask not in tasksFile:
+    def printTask(tasksFile,task):
+        if task == "All":
+            for item in tasksFile:
+                print(f"\nTask Name: {item}")
+                print(f"Keywords: {tasksFile[item]['KWs']}")
+                print(f"Category: {tasksFile[item]['category']}")
+                print(f"Color: {tasksFile[item]['color']}")
+                print(f"Size: {tasksFile[item]['size']}")
+                print(f"\nProfile: {tasksFile[item]['profile']}")
+                print(f"Proxy: {tasksFile[item]['proxy']}")
+                print(f"Delay: {tasksFile[item]['delay']}\n")
+        else:
+            print(f"\nTask Name: {task}")
+            print(f"Keywords: {tasksFile[task]['KWs']}")
+            print(f"Category: {tasksFile[task]['category']}")
+            print(f"Color: {tasksFile[task]['color']}")
+            print(f"Size: {tasksFile[task]['size']}")
+            print(f"\nProfile: {tasksFile[task]['profile']}")
+            print(f"Proxy: {tasksFile[task]['proxy']}")
+            print(f"Delay: {tasksFile[task]['delay']}\n")
+    whichTask = input("Enter the name of the task you wish to view. Enter 'All' to see all tasks. ")
+    if whichTask not in tasksFile and whichTask != "All":
         print(f"Could not find task '{whichTask}'\n")
         viewTask(tasksFile)
     else:
-        print(f"\nTask Name: {whichTask}")
-        print(f"Keywords: {tasksFile[whichTask]['KWs']}")
-        print(f"Category: {tasksFile[whichTask]['category']}")
-        print(f"Color: {tasksFile[whichTask]['color']}")
-        print(f"Size: {tasksFile[whichTask]['size']}")
-        print(f"\nProfile: {tasksFile[whichTask]['profile']}")
-        print(f"Proxy: {tasksFile[whichTask]['proxy']}")
-        print(f"Delay: {tasksFile[whichTask]['delay']}\n")
-
-        time.sleep(2.5)
+        printTask(tasksFile,whichTask)
         
 def editTask(tasksFile):
     whichTask = input("Enter the name of the task you wish to edit: ")
