@@ -1,1 +1,1 @@
-{"Get Bag": {"KWs": ["waist bag"], "category": "bags", "color": "white", "size": "", "profile": "profile0", "proxy": "", "delay": 4.0}, "Get Hoodie": {"KWs": ["hoodie"], "category": "hood", "color": "black", "size": "", "profile": "profile0", "proxy": "", "delay": 4.0}}
+{"get shirt": {"KWs": ["shirt"], "category": "shirt", "color": "white", "size": "large", "profile": "profile0", "proxy": "", "delay": 4.0}, "get pants": {"KWs": ["pants"], "category": "brown", "color": "brown", "size": "", "profile": "profile0", "proxy": "", "delay": 5.0}}

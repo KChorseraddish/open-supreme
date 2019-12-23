@@ -43,7 +43,7 @@ def addTask(tasksFile):
         profileFile = json.load(pFile)
         
     profile = -1            
-    taskName = input("Task Name: ").strip()
+    taskName = input("Task Name: ").strip().lower()
     keywords = input("Enter all keywords separated by a comma: ").strip()
     keywords = [k_w.strip() for k_w in keywords.split(",")]
     print(keywords)
@@ -103,28 +103,25 @@ def deleteTask(tasksFile):
         time.sleep(2)
 
 def viewTask(tasksFile):
+    def taskPrinter(item):
+        print(f"\nTask Name: {item}")
+        print(f"Keywords: {tasksFile[item]['KWs']}")
+        print(f"Category: {tasksFile[item]['category']}")
+        print(f"Color: {tasksFile[item]['color']}")
+        print(f"Size: {tasksFile[item]['size']}")
+        print(f"\nProfile: {tasksFile[item]['profile']}")
+        print(f"Proxy: {tasksFile[item]['proxy']}")
+        print(f"Delay: {tasksFile[item]['delay']}\n")
+    
     def printTask(tasksFile,task):
-        if task == "All":
+        if task == "all":
             for item in tasksFile:
-                print(f"\nTask Name: {item}")
-                print(f"Keywords: {tasksFile[item]['KWs']}")
-                print(f"Category: {tasksFile[item]['category']}")
-                print(f"Color: {tasksFile[item]['color']}")
-                print(f"Size: {tasksFile[item]['size']}")
-                print(f"\nProfile: {tasksFile[item]['profile']}")
-                print(f"Proxy: {tasksFile[item]['proxy']}")
-                print(f"Delay: {tasksFile[item]['delay']}\n")
+                taskPrinter(item)
         else:
-            print(f"\nTask Name: {task}")
-            print(f"Keywords: {tasksFile[task]['KWs']}")
-            print(f"Category: {tasksFile[task]['category']}")
-            print(f"Color: {tasksFile[task]['color']}")
-            print(f"Size: {tasksFile[task]['size']}")
-            print(f"\nProfile: {tasksFile[task]['profile']}")
-            print(f"Proxy: {tasksFile[task]['proxy']}")
-            print(f"Delay: {tasksFile[task]['delay']}\n")
-    whichTask = input("Enter the name of the task you wish to view. Enter 'All' to see all tasks. ")
-    if whichTask not in tasksFile and whichTask != "All":
+            taskPrinter(task)
+    
+    whichTask = input("Enter the name of the task you wish to view. Enter 'All' to see all tasks. ").strip().lower()
+    if whichTask not in tasksFile and whichTask != "all":
         print(f"Could not find task '{whichTask}'\n")
         viewTask(tasksFile)
     else:
